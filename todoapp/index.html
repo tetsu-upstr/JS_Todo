@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo App</title>
+  <!-- CSS -->
   <link
       href="https://jsprimer.net/use-case/todoapp/final/final/index.css"
       rel="stylesheet"
@@ -14,17 +15,23 @@
     <form action="" id="js-form">
       <input type="text"
              class="new-todo"
-             placefolder="what need to be done?"
+             placeholder="what need to be done?"
              autocomplete="off"
-             id="ks-form-input">
+             id="js-form-input">
     </form>
-    <div id="ks-todo-list" class="todo-list">
+    <!-- Todoリスト -->
+    <div id="js-todo-list" class="todo-list">
 
     </div>
+
     <footer class="footer">
+      <!-- Todoアイテム数の表示 -->
       <span id="js-todo-count">Todoアイテム数： 0</span>
     </footer>
+
   </div>
+
+  <!-- エントリーポイントの読み込み -->
   <script type="module" src="index.js"></script>
 </body>
 </html>
