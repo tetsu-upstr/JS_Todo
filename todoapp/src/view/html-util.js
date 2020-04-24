@@ -1,3 +1,7 @@
+/**
+ * 特殊な記号に対するエスケープ処理
+ * @param {string} str 
+ */
 export function escapeSpecialChars(str) {
   return str
     .replace(/&/g, "&amp;")
@@ -12,18 +16,23 @@ export function escapeSpecialChars(str) {
  * @param {string} html 
  */
 export function htmlToElement(html) {
-  const templete = doument.createElement("template");
+  const templete = document.createElement("template");
   templete.innerHTML = html;
   return templete.content.firstElementChild;
 }
 
 /**
  * HTML文字列からDOM Nodeを作成して返すタグ関数
+ * テンプレートリテラルにタグづけします。
+ * タグ関数には、第一引数に文字列リテラルの配列、
+ * 第二引数に埋め込まれる値の配列が与えられます。
  * @return {Element}
  */
 export function element(string, ...values) {
+  // 関数reduce(配列, 値, 添字) 数値や文字を合計（連結）する
   const htmlString = string.reduce((result, str, i) => {
-    const value = value[i - 1];
+    // initialValueを提供しない代わりにi-1で[0]から連結
+    const value = values[i - 1];
     if (typeof value === "string") {
       return result + escapeSpecialChars(value) + str;
     } else {
