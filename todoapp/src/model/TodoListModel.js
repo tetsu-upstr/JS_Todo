@@ -1,8 +1,6 @@
 import { EventEmitter } from "../EventEmitter.js";
-import { TodoItemModel } from "./TodoItemModel.js";
 
 export class TodoListModel extends EventEmitter {
-  
   /**
    * @param {TodoItemModel[]} [items] 初期アイテム一覧（デフォルトは空の配列） 
    */
@@ -35,8 +33,20 @@ export class TodoListModel extends EventEmitter {
     this.addEventlistener("change", listener);
   }
 
+  /**
+   * 状態が更新された時に呼ぶ。登録済みのリスナー関数を呼び出す
+   */
   emitChange() {
-    this.
+    this.emit("change");
+  }
+
+  /**
+   * TodoItemを追加する
+   * @param {TodoItemModel} todoItem 
+   */
+  addTodo(todoItem) {
+    this.items.push(todoItem);
+    this.emitChange();
   }
 
 }
