@@ -49,6 +49,10 @@ export class TodoListModel extends EventEmitter {
     this.emitChange();
   }
 
+  /**
+   * 指定したidのTodoItemのcompletedを更新する
+   * @param {{ id:number, completed: boolean}} param0 
+   */
   updateTodo({ id, completed }) {
     // `id`が一致するTodoItemを見つけ、あるなら完了状態の値を更新する
     const todoItem = this.items.find(todo => todo.id === id);
@@ -58,4 +62,19 @@ export class TodoListModel extends EventEmitter {
     todoItem.completed = completed;
     this.emitChange();
   }
+
+  /**
+   * 指定したidのTodoItemを削除する
+   * @param {{ id: number }} param0 
+   */
+  deleteTodo({ id }) {
+    // `id`に一致しないTodoItemだけを残すことで、`id`に一致するTodoItemを削除する
+    this.items = this.items.filter(todo => {
+      return todo.id != id;
+    });
+    this.emitChange();
+  }
+
+  // filter() メソッドは、引数として与えられたテスト関数を各配列要素に対して実行し、
+  // それに合格したすべての配列要素からなる新しい配列を生成します。
 }
