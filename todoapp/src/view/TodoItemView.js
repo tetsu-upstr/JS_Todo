@@ -12,8 +12,8 @@ export class TodoItemView {
     // 完了済みならchecked属性をつけ、未完了ならchecked属性を外す
     // input要素にはckeckboxクラスをつける
     const todoItemElement = todoItem.completed
-      ? element`<li><input type="checkbox" class="checkbox" checked><s>${item.title}</s><button class="delete">x</button></input></li>`
-      : element`<li><input type="checkbox" class="checkbox">${item.title}<button class="delete">x</button></input></li>`;
+      ? element`<li><input type="checkbox" class="checkbox" checked><s>${todoItem.title}</s><button class="delete">x</button></input></li>`
+      : element`<li><input type="checkbox" class="checkbox">${todoItem.title}<button class="delete">x</button></input></li>`;
 
     // チェックボックスがトグルしたときのイベントにリスナー関数を登録
     const inputCheckboxElement = todoItemElement.querySelector(".checkbox");
